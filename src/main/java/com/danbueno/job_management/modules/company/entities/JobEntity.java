@@ -1,7 +1,6 @@
 package com.danbueno.job_management.modules.company.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,6 +11,9 @@ import java.util.UUID;
 
 @Entity(name = "job")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobEntity {
 
   @Id

@@ -1,6 +1,7 @@
 package com.danbueno.job_management.modules.company.controller;
 
 import com.danbueno.job_management.modules.company.dto.AuthCompanyDTO;
+import com.danbueno.job_management.modules.company.dto.AuthCompanyResponseDTO;
 import com.danbueno.job_management.modules.company.useCases.AuthCompanyUseCase;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.naming.AuthenticationException;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/company")
 public class AuthCompanyController {
 
  @Autowired
  private AuthCompanyUseCase authCompanyUseCase;
 
-  @PostMapping("/company")
+  @PostMapping("/auth")
   public ResponseEntity<Object> create (@Valid @RequestBody AuthCompanyDTO authCompanyDTO) throws AuthenticationException {
     try {
-      String token = this.authCompanyUseCase.execute(authCompanyDTO);
+      AuthCompanyResponseDTO token = this.authCompanyUseCase.execute(authCompanyDTO);
 
       return ResponseEntity.ok().body(token);
     } catch (Exception e) {
